@@ -3,6 +3,9 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "dev": "bun ./src/index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -10,10 +13,13 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@repo/common": "*",
     "@repo/db": "*",
+    "@types/bcryptjs": "^2.4.6",
     "@types/dotenv": "^8.2.3",
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.9",
+    "bcryptjs": "^3.0.2",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2"
