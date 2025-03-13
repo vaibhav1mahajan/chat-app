@@ -1,8 +1,9 @@
-import { response, Router, type Request, type Response } from "express";
+import {  Router, type Request, type Response } from "express";
 import {signupSchema , signinSchema} from '@repo/common/index'
 import { prisma } from "@repo/db/index";
 import { assignToken } from "../lib/token";
 import bcrypt from "bcryptjs";
+import { protectedRoute } from "../lib/middleware";
 
 const authRouter = Router();
 
@@ -57,7 +58,7 @@ authRouter.post('/signup',async (req:Request,res:Response)=>{
     }
 })
 
-authRouter.post('/singin',async (req:Request,res:Response)=>{
+authRouter.post('/signin',async (req:Request,res:Response)=>{
     const body = req.body;
     const response = signinSchema.safeParse(body);
     if(!response.success){
@@ -105,8 +106,8 @@ authRouter.post('/singin',async (req:Request,res:Response)=>{
 })
 
 
-authRouter.delete('/logout',(req:Request,res:Response)=>{
-    res.clearCookie('token');
+authRouter.delete('/logout',protectedRoute,(req:Request,res:Response)=>{
+    res.clearCookie('jwt');
     res.json({
         msg:"Token invalided"
     })

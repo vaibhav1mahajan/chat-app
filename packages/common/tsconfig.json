@@ -22,8 +22,6 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false,
-    "types": ["node", "express"]
-  },
-  "include": ["@types/**/*.d.ts", "src/**/*.ts"]
+    "noPropertyAccessFromIndexSignature": false
+  }
 }
