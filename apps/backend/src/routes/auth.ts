@@ -4,6 +4,7 @@ import { prisma } from "@repo/db/index";
 import { assignToken } from "../lib/token";
 import bcrypt from "bcryptjs";
 import { protectedRoute } from "../lib/middleware";
+import cloudinary from "../lib/cloudinary";
 
 const authRouter = Router();
 
@@ -113,5 +114,47 @@ authRouter.delete('/logout',protectedRoute,(req:Request,res:Response)=>{
     })
 })
 
+
+authRouter.put('/update-profile',protectedRoute,async (req:Request,res:Response)=>{
+        try {
+            const {profilePic} = req.body;
+           const userId =  req.userId
+           if(!profilePic){
+            res.status(400).json({
+                msg:"Profile pic is required"
+            })
+            return;
+           }
+         const uploadResponse = await cloudinary.uploader.upload(profilePic);
+
+         if(!uploadResponse){
+            res.status(411).json({
+                msg:"Profile pic is not uploaded to cloud"
+            })
+            return ;
+         }
+         const updatedUser = await prisma.user.update({
+            where:{
+                id:userId
+            },
+            data:{
+                profilePic:uploadResponse.secure_url
+            },
+
+         })
+         if(!updatedUser){
+            res.status(411).json({
+                msg:"Error while updating profile",
+            })
+            return ;
+         }
+
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({
+                msg:"Internal server error"
+            })
+        }
+})
 
 export default authRouter
