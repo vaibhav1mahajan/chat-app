@@ -9,10 +9,14 @@ const PORT = process.env.BACKEND_SERVER_PORT
 
 const app = express();
 
-app.use(express.json())
+
+app.use(express.json({ limit: "10mb" })); // Increase limit as needed
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+
 app.use(cookieParser())
+// app.use(express.urlencoded({ extended: true }))
 app.use('/v1/auth',authRouter)
-app.use('/v1/message',messageRouter)
+app.use('/v1/message',messageRouter )
 
 
 
