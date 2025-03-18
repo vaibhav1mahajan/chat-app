@@ -24,6 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <div className="relative w-full h-screen">
+          <div className="absolute inset-0 w-full h-full -z-10 bg-neutral-900">
+            <div className="absolute hidden md:block bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_1100px_at_50%_200px,#021526,transparent)]"></div>
+            <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_200px_at_50%_300px,#021526,transparent)]"></div>
+          </div>
+        </div>
         {children}
       </body>
     </html>
