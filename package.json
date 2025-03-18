@@ -22,6 +22,8 @@
     "packages/*"
   ],
   "dependencies": {
-    "dotenv": "^16.4.7"
+    "@tailwindcss/cli": "^4.0.14",
+    "dotenv": "^16.4.7",
+    "tailwindcss": "^4.0.14"
   }
 }

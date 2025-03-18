@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./*": "./src/*.tsx"
+    "./*": "./src/*.tsx",
+    "./globals.css": "./dist/globals.css"
   },
   "scripts": {
+    "tailwind:build": "bunx @tailwindcss/cli -i ./src/globals.css -o ./dist/globals.css",
+    "tailwind:dev": "bunx @tailwindcss/cli -i ./src/globals.css -o ./dist/globals.css --watch",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
@@ -21,7 +24,11 @@
     "typescript": "5.8.2"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.0.14",
+    "@tailwindcss/postcss": "^4.0.14",
+    "postcss": "^8.5.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.14"
   }
 }

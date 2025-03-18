@@ -13,7 +13,7 @@
       "cache": false
     },
     "build": {
-      "dependsOn": ["^build" , "^db:generate"],
+      "dependsOn": ["^build" , "^db:generate", "^tailwind:build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
@@ -24,9 +24,17 @@
       "dependsOn": ["^check-types"]
     },
     "dev": {
-      "dependsOn": ["^db:generate"],
+      "dependsOn": ["^db:generate", "^tailwind:dev"],
       "cache": false,
       "persistent": true
+    },
+    "tailwind:build": {
+      "dependsOn": ["^tailwind:build"]
+      
+    },
+    "tailwind:dev": {
+      "dependsOn": ["^tailwind:dev"]
+      
     }
   }
 }
