@@ -1,2 +1,25 @@
 @import "tailwindcss";
 @import "@repo/ui/globals.css";
+
+@theme {
+  --container-padding: 1rem; /* Default padding */
+  --container-padding-md: 2rem; /* Medium screens and up */
+  --container-padding-lg: 4rem; /* Large screens and up */
+}
+
+@utility container {
+  padding-inline: 1.5rem;
+  margin-inline: auto;
+
+  @variant sm {
+    padding-inline: 20px;
+  }
+
+  @variant lg {
+    padding-inline: 80px;
+  }
+
+  @variant xl {
+    padding-inline: 120px;
+  }
+}

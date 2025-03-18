@@ -2,14 +2,13 @@
 
 import { ReactNode } from "react";
 
-
 export const Button = () => {
   return (
     <button
-      className='bg-blue-500 text-white p-2 rounded-md'
+      className="p-2 text-white bg-blue-500 rounded-md px-120"
       onClick={() => alert(`Hello from your  app!`)}
     >
-     Hello
+      Hello
     </button>
   );
 };
